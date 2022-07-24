@@ -56,6 +56,7 @@ function game() {
   checkScore(winCounter, loseCounter);
 }
 
+//Score check
 function checkScore(score, compScore) {
   console.log(
     score == compScore
