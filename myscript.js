@@ -35,6 +35,8 @@ function playRound(player, computer) {
 //play 5 rounds
 function game() {
   let winExp = /win/i;
+  let tieExp = /tie/i;
+  let loseCounter = 0;
   let winCounter = 0;
 
   for (let i = 1; i <= 5; i++) {
@@ -42,10 +44,26 @@ function game() {
     computerSelect = getComputerChoice();
     console.log("ROUND " + i + ":" + playRound(playerSelect, computerSelect));
     let result = playRound(playerSelect, computerSelect).match(winExp);
+    let resultTie = playRound(playerSelect, computerSelect).match(tieExp);
     if (result) {
       winCounter++;
+      console.log(winCounter);
+    } else if (resultTie) {
+    } else {
+      loseCounter++;
+      console.log(loseCounter);
     }
   }
+
+  //checkScore(winCounter);
+}
+
+function checkScore(score) {
+  console.log(
+    score >= 3
+      ? `Congratulations you scored ${score} points. You win this match. :)`
+      : `You lose you scored ${score} points. Better luck next time. :(`
+  );
 }
 
 //const playerSelect = prompt('Enter your play:  "Rock,paper or scissors" ', "").toLowerCase();
