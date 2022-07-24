@@ -32,7 +32,24 @@ function playRound(player, computer) {
   }
 }
 
-const playerSelect = prompt('Enter your play:  "Rock,paper or scissors" ', "").toLowerCase();
-const computerSelect = getComputerChoice();
+//play 5 rounds
+function game() {
+  let winExp = /win/i;
+  let winCounter = 0;
 
-console.log(playRound(playerSelect, computerSelect));
+  for (let i = 1; i <= 5; i++) {
+    playerSelect = prompt('Enter your play:  "Rock, paper or scissors" ', "").toLowerCase();
+    computerSelect = getComputerChoice();
+    console.log("ROUND " + i + ":" + playRound(playerSelect, computerSelect));
+    let result = playRound(playerSelect, computerSelect).match(winExp);
+    if (result) {
+      winCounter++;
+    }
+  }
+}
+
+//const playerSelect = prompt('Enter your play:  "Rock,paper or scissors" ', "").toLowerCase();
+//const computerSelect = getComputerChoice();
+
+//console.log(playRound(playerSelect, computerSelect));
+game();
