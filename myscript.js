@@ -47,22 +47,22 @@ function game() {
     let resultTie = playRound(playerSelect, computerSelect).match(tieExp);
     if (result) {
       winCounter++;
-      console.log(winCounter);
     } else if (resultTie) {
     } else {
       loseCounter++;
-      console.log(loseCounter);
     }
   }
 
-  //checkScore(winCounter);
+  checkScore(winCounter, loseCounter);
 }
 
-function checkScore(score) {
+function checkScore(score, compScore) {
   console.log(
-    score >= 3
-      ? `Congratulations you scored ${score} points. You win this match. :)`
-      : `You lose you scored ${score} points. Better luck next time. :(`
+    score == compScore
+      ? `It's a draw, both scored ${score}. :|`
+      : score > compScore
+      ? `Congratulations you scored ${score}. You win this match. :)`
+      : `You lose you only scored ${score}. Better luck next time. :(`
   );
 }
 
